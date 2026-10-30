@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Shared dark ENIGMA treatment for member and account routes. */
+main[data-enigma-page] {
+  --enigma-bg: #080d12;
+  --enigma-surface-1: #101a22;
+  --enigma-surface-2: #14212b;
+  --enigma-cyan: #43e8d0;
+  --enigma-text: #f2f7fa;
+  --enigma-muted: #a8bac5;
+  --enigma-border: #25384a;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 70% 0, #0d2a30 0, var(--enigma-bg) 54%) !important;
+  color: var(--enigma-text) !important;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+main[data-enigma-page] header {
+  border-color: var(--enigma-border) !important;
+  background: rgb(8 13 18 / 92%) !important;
+  box-shadow: 0 1px 0 rgb(67 232 208 / 10%);
+}
+
+main[data-enigma-page] header a:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--enigma-text);
+}
+
+main[data-enigma-page] header a:first-child::before {
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  background: var(--enigma-cyan);
+  box-shadow: 0 0 14px var(--enigma-cyan);
+  content: "";
+}
+
+main[data-enigma-page] :is(
+  [class*="bg-[#"],
+  .bg-white,
+  .bg-amber-50,
+  .bg-emerald-50,
+  .bg-green-50,
+  .bg-red-50,
+  .bg-rose-50
+) {
+  background-color: var(--enigma-surface-1) !important;
+}
+
+main[data-enigma-page] :is(
+  [class*="border-[#"],
+  .border-amber-200,
+  .border-cyan-100\/20,
+  .border-cyan-100\/35,
+  .border-emerald-200,
+  .border-green-200,
+  .border-red-200,
+  .border-rose-200
+) {
+  border-color: var(--enigma-border) !important;
+}
+
+main[data-enigma-page] [class*="text-[#"] {
+  color: var(--enigma-muted) !important;
+}
+
+main[data-enigma-page] :is(
+  [class*="text-[#0"],
+  [class*="text-[#1"],
+  [class*="text-[#2"],
+  [class*="text-[#3"],
+  [class*="text-[#d"],
+  [class*="text-[#e"],
+  [class*="text-[#f"]
+) {
+  color: var(--enigma-text) !important;
+}
+
+main[data-enigma-page] :is(h1, h2, h3, .font-serif) {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+main[data-enigma-page] :is(input, textarea, select) {
+  border-color: var(--enigma-border) !important;
+  border-radius: 10px;
+  background: var(--enigma-bg) !important;
+  color: var(--enigma-text) !important;
+}
+
+main[data-enigma-page] :is(button, input, textarea, select) {
+  font-family: inherit;
+}
+
+main[data-enigma-page] :is(button, a)[class*="bg-[#"] {
+  border-color: var(--enigma-cyan) !important;
+  background: var(--enigma-cyan) !important;
+  color: #04211d !important;
+  font-weight: 700;
+}
+
+main[data-enigma-page] :is(.bg-white, [class*="bg-[#"]) {
+  border-radius: 14px;
+  box-shadow: 0 18px 52px -34px rgb(0 0 0 / 80%);
+}
+
+main[data-enigma-page] a:not([class*="bg-[#"]) {
+  color: var(--enigma-cyan);
+}
+
+main[data-enigma-page] :focus-visible {
+  outline: 2px solid var(--enigma-cyan);
+  outline-offset: 3px;
+}
